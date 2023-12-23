@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    
+    <!-- NAVBAR -->
+    <nav class="bg-[#ff6600]" style="z-index: 1000;">
+        <div class="md:flex items-center justify-between py-4 px-8 md:px-12">
+            <div class="flex justify-between items-center">
+                <div class="ml-[3rem]">
+                    <img class="my-2 h-14" src="https://suitmedia.com/_nuxt/img/logo-white.081d3ce.png" alt="">
+                </div>
+                <div class="md:hidden">
+                    <button type="button"
+                        class="block text-gray-800 hover:text-gray-700 focus:text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                            <path class="hidden"
+                                d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z" />
+                            <path
+                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row hidden md:block -mx-2">
+                <a href="#"   class=" text-white text-lg py-2 px-2 md:mx-2">Work</a>
+                <a href="#"   class=" text-white text-lg py-2 px-2 md:mx-2">About</a>
+                <a href="#"   class=" text-white text-lg py-2 px-2 md:mx-2">Services</a>
+                <a href="#"   class=" border-b-4 text-white text-lg py-2 px-2 md:mx-2">Ideas</a>
+                <a href="#"   class=" text-white text-lg py-2 px-2 md:mx-2">Careers</a>
+                <a href="#"   class=" text-white text-lg py-2 px-2 md:mx-2">Contact</a>
+            </div>
+            
+            
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <div class="relative">
+        <div>
+            <div style="clip-path: polygon(0 0, 100% 0%, 100% 75%, 0% 100%);">
+                <img class="h-[26rem] w-screen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmYoxmhXrDXRVB4mfBLeR62qUDGR8qe9B9pxBUIm7s5A&s" alt="">
+            </div>
+        </div>
+    
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+            <p class="text-7xl mb-1">Ideas</p>
+            <p class="text-1x4">Where all our great things begin</p>
+        </div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+
+    <!-- SORT -->
+    <div class="">
+        <div class="ml-[3rem] px-14 my-10 flex justify-between text-center">
+            <div>
+                Showing 1 - 10 of 100
+            </div>
+    
+            <div class="flex pr-14 text-center text-1x4 ">
+                Show per page:
+                <div class="border-2 rounded-full w-fit flex pl-2 mr-5 ml-2 ">
+                    10
+                    <div class="pl-8 flex items-center pr-1">
+                        <img class="h-3" src="https://spaces-cdn.clipsafari.com/s5kodg8dwu2znzd8c1kfc6cnqcxs" alt="">
+                    </div>
+                </div>
+    
+                Sort By:
+                <div class="border-2 rounded-full w-fit flex pl-2 ml-2 ">
+                    Nearest
+                    <div class="pl-8 flex items-center pr-1">
+                        <img class="h-3" src="https://spaces-cdn.clipsafari.com/s5kodg8dwu2znzd8c1kfc6cnqcxs" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="ml-[3rem] px-14 my-10 flex justify-evenly " id="cards">
+
+        <!-- <div class="max-w-sm rounded-xl overflow-hidden shadow-lg w-1/4 mx-2">
+            <img class="w-full" src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D">
+            <div class="px-6 py-4">
+              <div class="text-gray-700 text-base">11 september</div>
+              <p class="font-bold text-xl mb-2">
+                asdaasd asdasd asaadasd asdasdasdasdasda asdasdasd asd asdas.
+              </p>
+            </div>
+          </div> -->
+          
+
+    </div>
+
+    <script>
+        const apiUrl = 'https://suitmedia-backend.suitdev.com/api/ideas';
+        const pageNumber = 1;
+        const pageSize = 10;
+        const appendFields = ['small_image', 'medium_image'];
+        const sort = '-published_at';
+        
+        const queryParams = new URLSearchParams({
+        
+        });
+        
+        const fullUrl = `${apiUrl}?${queryParams.toString()}`;
+        
+        fetch(fullUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            // Check if 'data' property exists and is an array
+            if (data && Array.isArray(data.data)) {
+              // Populate the table with data
+              const tableBody = document.getElementById('cards');
+        
+              data.data.forEach(item => {
+                const row = document.createElement('div');
+                row.innerHTML = `
+                <img class="w-full" src="${item.small_image}">
+                <div class="text-gray-700 text-base">${item.id}</div>
+                <p class="font-bold text-xl mb-2">${item.title}</p>
+                `;
+                tableBody.appendChild(row);
+              });
+            } else {
+              console.error('Invalid data structure. Expected "data" property to be an array.');
+            }
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+          });
+        </script>
+
+</body>
+
+
+</html>
